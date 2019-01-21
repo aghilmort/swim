@@ -4,7 +4,7 @@ import java.io.PrintStream;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.collections15.Transformer;
+//import org.apache.commons.collections15.Transformer;
 
 import swim.core.network.UWSensorNetwork;
 import swim.core.network.Assignment;
@@ -14,7 +14,7 @@ import swim.core.network.Path;
 import swim.core.network.Route;
 import swim.core.network.algorithm.Router;
 import swim.core.network.misc.ReadOnlyProperty;
-import edu.uci.ics.jung.algorithms.shortestpath.DijkstraShortestPath;
+//import edu.uci.ics.jung.algorithms.shortestpath.DijkstraShortestPath;
 
 /** Implements the {@link Router} interface.
  * Assumes infinite link capacities, and assumes that link cost

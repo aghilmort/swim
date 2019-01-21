@@ -1,10 +1,10 @@
 package swim.util.plot;
 
 import info.monitorenter.gui.chart.Chart2D;
-import info.monitorenter.gui.chart.IAxis;
+//import info.monitorenter.gui.chart.IAxis;
 import info.monitorenter.gui.chart.ITrace2D;
 import info.monitorenter.gui.chart.traces.Trace2DLtd;
-import info.monitorenter.gui.chart.views.ChartPanel;
+//import info.monitorenter.gui.chart.views.ChartPanel;
 
 import java.awt.Color;
 import java.awt.event.WindowAdapter;

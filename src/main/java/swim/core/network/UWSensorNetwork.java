@@ -2,8 +2,8 @@ package swim.core.network;
 
 import java.util.*;
 
-import edu.uci.ics.jung.graph.DirectedSparseGraph;
-import edu.uci.ics.jung.graph.util.EdgeType;
+//import edu.uci.ics.jung.graph.DirectedSparseGraph;
+//import edu.uci.ics.jung.graph.util.EdgeType;
 
 import swim.core.network.FlowModel;
 import swim.core.network.CostModel;

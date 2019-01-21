@@ -2,7 +2,7 @@ package swim.core.network.algorithm;
 
 import java.io.PrintStream;
 
-import org.apache.commons.collections15.Transformer;
+import org.apache.commons.collections4.Transformer;
 
 import swim.core.network.algorithm.*;
 import swim.core.network.misc.DoublePropertyMap;

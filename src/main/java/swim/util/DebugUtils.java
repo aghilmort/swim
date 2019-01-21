@@ -27,7 +27,7 @@ import com.jme3.texture.Texture2D;
 import com.jme3.texture.image.DefaultImageRaster;
 import com.jme3.texture.image.ImageRaster;
 import com.jme3.util.BufferUtils;
-import com.zero_separation.plugins.imagepainter.ImagePainter;
+//import com.zero_separation.plugins.imagepainter.ImagePainter;
 import java.awt.color.ColorSpace;
 import java.nio.ByteBuffer;
 import java.util.Iterator;
