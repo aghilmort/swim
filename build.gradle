@@ -1,0 +1,106 @@
+/*
+ * For more details take a look at the Java Quickstart chapter in the Gradle
+ * user guide available at https://docs.gradle.org/5.1.1/userguide/tutorial_java_projects.html
+ */
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.ajoberstar.grgit' version '3.0.0'
+}
+
+ext {
+    jmonkeyengine_version = '[3.2,)'
+}
+
+repositories {
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+
+    maven { url 'http://repo.spring.io/plugins-release/' }
+    maven { url 'https://www.xypron.de/repository/' }
+    maven { url 'http://maven.jzy3d.org/releases/' }
+    maven { url 'http://central.maven.org/maven2/' }
+    maven { url 'http://maven.ibiblio.org/maven2/' }
+    maven { url 'http://nifty-gui.sourceforge.net/nifty-maven-repo' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    maven { url 'https://oss.sonatype.org/content/repositories/releases/' }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+
+    compile fileTree(dir: 'lib', include: ['*.jar'])
+    compile "org.jmonkeyengine:jme3-core:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-plugins:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-effects:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-networking:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-blender:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-bullet:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-bullet-native:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-lwjgl:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-niftygui:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-jogg:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-desktop:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-terrain:$jmonkeyengine_version"
+    compile "org.apache.servicemix.bundles:org.apache.servicemix.bundles.collections-generic:4.01_1"
+    compile "com.blazegraph:colt:2.1.4"
+    compile "org.glassfish.main.concurrent:concurrent:5.1.0-RC1"
+    compile "org.gnu.glpk:glpk-java:1.11.0"
+    compile "org.j3d:j3d-core:3.0.1"
+    compile "org.jacop:jacop:4.6.0"
+    compile "net.sf.sociaal:jbullet:3.0.0.20130526"
+    compile "net.sf.jchart2d:jchart2d:3.3.2"
+    compile "com.jidesoft:jide-oss:3.6.18"
+    compile "net.sf.jung:jung-3d:2.0.1"
+    compile "net.sf.jung:jung-3d-demos:2.0.1"
+    compile "net.sf.jung:jung-algorithms:2.1.1"
+    compile "org.apache.servicemix.bundles:org.apache.servicemix.bundles.jung-api:2.1.1_1"
+    compile "net.sf.jung:jung-io:2.1.1"
+    compile "net.sf.jung:jung-jai:2.0.1"
+    compile "net.sf.jung:jung-samples:2.1.1"
+    compile "org.robolectric:junit:4.1"
+    compile "org.jzy3d:jzy3d-api:0.9.1"
+    compile "org.jzy3d:jzy3d-g2d:0.9.1"
+    compile "org.jzy3d:jzy3d-jdt-core:0.9.1"
+    compile "net.sf.sociaal:stack-alloc:3.0.0.20130526"
+    compile "org.apache.servicemix.specs:org.apache.servicemix.specs.stax-api-1.2:2.9.0"
+    compile "com.massisframework.j3d:vecmath:1.6.0.1"
+    compile "org.codehaus.woodstox:wstx-asl:4.0.6"
+    compile "org.apache.servicemix.bundles:org.apache.servicemix.bundles.xmlgraphics-commons:2.3_1"
+    compile "net.zombie_sama.imagepainter:imagepainter:0.2.4"
+    compile "org.apache.commons:commons-collections4:4.2"
+    compile "com.datumbox:lpsolve:5.5.2.0"
+}
+
+mainClassName = 'swim.test.TestRunner'
+
+task copyDeps(type: Copy) {
+  from configurations.runtime
+  into 'lib'
+  finalizedBy 'cloneImagePainter'
+}
+
+import org.ajoberstar.grgit.Grgit
+
+task cloneImagePainter {
+    doFirst {
+        println 'getting ImagePainter ...'
+        def imagePainter = Grgit.clone(
+            dir: 'lib/image_painter',
+            uri: "https://github.com/jMonkeyEngine-Contributions/ImagePainter.git"
+        )
+    }
+    finalizedBy 'copyImagePainterLibs'
+}
+
+task copyImagePainterLibs(type: Copy) {
+    from 'lib/image_painter/release/libs'
+    into 'lib'
+    finalizedBy 'cleanImagePainter'
+}
+
+task cleanImagePainter(type: Delete) {
+    delete 'lib/image_painter'
+}
