@@ -20,6 +20,60 @@ In addition to the default tests that can be run in each simulation mode, there 
 
 ![Alt text](/images/Complex_2.png?raw=true "Another snapshot showing the underwater view")
 
+## How to Use
+
+Install [jMonkeyEngine](http://jmonkeyengine.org/)
+
+Install [Gradle](https://gradle.org/) if you don't already have it. Installation instructions can be found here: [https://gradle.org/install/](https://gradle.org/install/)
+
+`cd` into your jMonkeyEngine workspace, e.g. `cd ~/jME_workspace`
+
+Clone the repo
+
+```
+~/jME_workspace$ git clone https://github.com/aghilmort/swim.git
+```
+
+In your terminal, run the `copyDeps` task to let Gradle download the dependencies and copy them into the `swim/lib` folder
+
+```
+~/jME_workspace$ cd swim
+~/jME_workspace/swim$ gradle copyDeps
+```
+
+List the files in `lib` folder to verify that dependencies have been successfully downloaded and copied
+
+```
+~/jME_workspace/swim$ ls -la lib/
+total 63236
+drwxrwxr-x  2 sherif sherif    12288 Jan 21 13:42 .
+drwxrwxr-x 10 sherif sherif     4096 Jan 21 13:50 ..
+-rw-rw-r--  1 sherif sherif    15556 Jan 21 13:42 animated-vector-drawable-25.3.1.aar
+-rw-rw-r--  1 sherif sherif    14157 Jan 21 13:42 annotations-4.1.jar
+-rw-rw-r--  1 sherif sherif  1026404 Jan 21 13:42 appcompat-v7-25.3.1.aar
+-rw-rw-r--  1 sherif sherif   113676 Jan 21 13:42 asm-7.0.jar
+-rw-rw-r--  1 sherif sherif    33317 Jan 21 13:42 asm-analysis-7.0.jar
+...
+```
+
+Open jMonkeyEngine and hit `Ctrl + Shift + O` or use the "Open Project" icon to open a project
+
+Select the `swim` folder and click `Open project`
+
+You should now be able to run the application by hitting `F6` (or clicking the "Run Project" icon)
+
+If you prefer to run the project using Gradle, you can type the following command in your terminal
+
+```
+~/jME_workspace/swim$ gradle run
+```
+
+You can also build the project any time using Gradle's build task
+
+```
+~/jME_workspace/swim$ gradle build
+```
+
 ## Authors
 
 * **Sherif Tolba** - [website](https://sheriftolba.com/)
